@@ -2,11 +2,11 @@
 public class Autor 
 {
 	// atributos
-	private int id;
+	private String id;
 	private String nombre;
 	
 	// constructor
-	public Autor(int ide, String name) 
+	public Autor(String ide, String name) 
 	{
 		id = ide;
 		nombre = name;
@@ -18,11 +18,11 @@ public class Autor
 	// Getters y Setters
 	
 	// ID
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
