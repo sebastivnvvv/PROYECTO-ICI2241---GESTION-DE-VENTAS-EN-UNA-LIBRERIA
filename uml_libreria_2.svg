@@ -1,0 +1,116 @@
+<svg width="1220" height="1070" viewBox="0 0 1220 1070" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Diagrama UML de clases - Gestion de Ventas en Libreria (sin Cliente)</title>
+<rect x="0" y="0" width="1220" height="1070" fill="#FAF9F5"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#2C2C2A" stroke-width="1.3"/></marker><marker id="hollowtri" viewBox="0 0 14 12" refX="13" refY="6" markerWidth="14" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L13 6L1 11Z" fill="#FAF9F5" stroke="#2C2C2A" stroke-width="1"/></marker><marker id="diamond" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="14" markerHeight="10" orient="auto-start-reverse"><path d="M1 5L7 1L13 5L7 9Z" fill="#2C2C2A"/></marker></defs>
+<line x1="260" y1="209.0" x2="340" y2="195.0" stroke="#2C2C2A" stroke-width="1" marker-start="url(#diamond)"/>
+<text x="265" y="201.0" font-size="10.5" font-family="sans-serif" fill="#5F5E5A">librosPublicados (List, anidada)  1     *</text>
+<line x1="190.0" y1="420" x2="150.0" y2="278" stroke="#2C2C2A" stroke-width="1" marker-start="url(#diamond)"/>
+<text x="198.0" y="349.0" font-size="10.5" font-family="sans-serif" fill="#5F5E5A">autores (Map)  1     *</text>
+<line x1="340" y1="550.9" x2="420" y2="633.0" stroke="#2C2C2A" stroke-width="1" marker-start="url(#diamond)"/>
+<text x="350.0" y="585.95" font-size="10.5" font-family="sans-serif" fill="#5F5E5A">ventas (List)  1     *</text>
+<line x1="535.0" y1="580" x2="515.0" y2="510" stroke="#2C2C2A" stroke-width="1" marker-start="url(#diamond)"/>
+<text x="541.0" y="545.0" font-size="10.5" font-family="sans-serif" fill="#5F5E5A">items  1     *</text>
+<line x1="515.0" y1="420" x2="450.0" y2="280" stroke="#2C2C2A" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="650" y1="675.4" x2="720" y2="644.0" stroke="#2C2C2A" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<text x="675.0" y="653.7" font-size="10.5" font-family="sans-serif" fill="#5F5E5A">&lt;&lt;aplica&gt;&gt;</text>
+<line x1="805.0" y1="760" x2="840.0" y2="688" stroke="#2C2C2A" stroke-width="1" marker-end="url(#hollowtri)"/>
+<line x1="1065.0" y1="760" x2="840.0" y2="688" stroke="#2C2C2A" stroke-width="1" marker-end="url(#hollowtri)"/>
+<line x1="40" y1="527.8" x2="310" y2="694.0" stroke="#2C2C2A" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<line x1="40" y1="558.6" x2="310" y2="794.0" stroke="#2C2C2A" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<g>
+<rect x="40" y="140" width="220" height="138" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="150.0" y="157" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">Autor</text>
+<line x1="40" y1="166" x2="260" y2="166" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="48" y="179" font-size="11.5" font-family="monospace" fill="#2C2C2A">- id: String</text>
+<text x="48" y="195" font-size="11.5" font-family="monospace" fill="#2C2C2A">- nombre: String</text>
+<text x="48" y="211" font-size="11.5" font-family="monospace" fill="#2C2C2A">- nacionalidad: String</text>
+<line x1="40" y1="222" x2="260" y2="222" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="48" y="235" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ getNombre(): String</text>
+<text x="48" y="251" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ setNombre(n: String): void</text>
+<text x="48" y="267" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ agregarLibro(l: Libro): void</text>
+</g>
+<g>
+<rect x="340" y="110" width="220" height="170" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="450.0" y="127" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">Libro</text>
+<line x1="340" y1="136" x2="560" y2="136" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="348" y="149" font-size="11.5" font-family="monospace" fill="#2C2C2A">- isbn: String</text>
+<text x="348" y="165" font-size="11.5" font-family="monospace" fill="#2C2C2A">- titulo: String</text>
+<text x="348" y="181" font-size="11.5" font-family="monospace" fill="#2C2C2A">- precio: double</text>
+<text x="348" y="197" font-size="11.5" font-family="monospace" fill="#2C2C2A">- stock: int</text>
+<text x="348" y="213" font-size="11.5" font-family="monospace" fill="#2C2C2A">- categoria: String</text>
+<text x="348" y="229" font-size="11.5" font-family="monospace" fill="#2C2C2A">- autorId: String</text>
+<line x1="340" y1="240" x2="560" y2="240" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="348" y="253" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ venderUnidad(c: int): void</text>
+<text x="348" y="269" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ getters/setters</text>
+</g>
+<g>
+<rect x="40" y="420" width="300" height="154" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="190.0" y="437" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">GestorLibreria</text>
+<line x1="40" y1="446" x2="340" y2="446" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="48" y="459" font-size="11.5" font-family="monospace" fill="#2C2C2A">- autores: Map&lt;String,Autor&gt;</text>
+<text x="48" y="475" font-size="11.5" font-family="monospace" fill="#2C2C2A">- ventas: List&lt;Venta&gt;</text>
+<line x1="40" y1="486" x2="340" y2="486" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="48" y="499" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ buscarLibro(isbn: String): Libro</text>
+<text x="48" y="515" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ buscarLibro(t: String, a: String): List&lt;Libro&gt;</text>
+<text x="48" y="531" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ sugerirRelacionados(l: Libro): List&lt;Libro&gt;</text>
+<text x="48" y="547" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ registrarVenta(v: Venta): void</text>
+<text x="48" y="563" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ agregarAutor/Libro, editar, eliminar</text>
+</g>
+<g>
+<rect x="420" y="420" width="190" height="90" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="515.0" y="437" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">ItemVenta</text>
+<line x1="420" y1="446" x2="610" y2="446" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="428" y="459" font-size="11.5" font-family="monospace" fill="#2C2C2A">- libro: Libro</text>
+<text x="428" y="475" font-size="11.5" font-family="monospace" fill="#2C2C2A">- cantidad: int</text>
+<line x1="420" y1="486" x2="610" y2="486" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="428" y="499" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ subtotal(): double</text>
+</g>
+<g>
+<rect x="420" y="580" width="230" height="106" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="535.0" y="597" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">Venta</text>
+<line x1="420" y1="606" x2="650" y2="606" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="428" y="619" font-size="11.5" font-family="monospace" fill="#2C2C2A">- items: List&lt;ItemVenta&gt;</text>
+<text x="428" y="635" font-size="11.5" font-family="monospace" fill="#2C2C2A">- fecha: Date</text>
+<line x1="420" y1="646" x2="650" y2="646" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="428" y="659" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ calcularTotal(): double</text>
+<text x="428" y="675" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ calcularTotal(p: Promocion): double</text>
+</g>
+<g>
+<rect x="720" y="600" width="240" height="88" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="840.0" y="614" text-anchor="middle" font-size="11" font-style="italic" font-family="sans-serif" fill="#5F5E5A">&lt;&lt;abstract&gt;&gt;</text>
+<text x="840.0" y="632" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">Promocion</text>
+<line x1="720" y1="640" x2="960" y2="640" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="728" y="653" font-size="11.5" font-family="monospace" fill="#2C2C2A">- nombre: String</text>
+<line x1="720" y1="664" x2="960" y2="664" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="728" y="677" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ calcularDescuento(m: double): double</text>
+</g>
+<g>
+<rect x="690" y="760" width="230" height="74" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="805.0" y="777" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">PromocionPorcentaje</text>
+<line x1="690" y1="786" x2="920" y2="786" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="698" y="799" font-size="11.5" font-family="monospace" fill="#2C2C2A">- porcentaje: double</text>
+<line x1="690" y1="810" x2="920" y2="810" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="698" y="823" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ calcularDescuento(m: double): double</text>
+</g>
+<g>
+<rect x="950" y="760" width="230" height="74" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="1065.0" y="777" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">PromocionDosPorUno</text>
+<line x1="950" y1="786" x2="1180" y2="786" stroke="#5F5E5A" stroke-width="0.7"/>
+<line x1="950" y1="810" x2="1180" y2="810" stroke="#5F5E5A" stroke-width="0.7"/>
+<text x="958" y="823" font-size="11.5" font-family="monospace" fill="#2C2C2A">+ calcularDescuento(m: double): double</text>
+</g>
+<g>
+<rect x="40" y="650" width="270" height="88" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="175.0" y="664" text-anchor="middle" font-size="11" font-style="italic" font-family="sans-serif" fill="#5F5E5A">&lt;&lt;exception&gt;&gt;</text>
+<text x="175.0" y="682" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">StockInsuficienteException</text>
+<line x1="40" y1="690" x2="310" y2="690" stroke="#5F5E5A" stroke-width="0.7"/>
+<line x1="40" y1="714" x2="310" y2="714" stroke="#5F5E5A" stroke-width="0.7"/>
+</g>
+<g>
+<rect x="40" y="750" width="270" height="88" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="175.0" y="764" text-anchor="middle" font-size="11" font-style="italic" font-family="sans-serif" fill="#5F5E5A">&lt;&lt;exception&gt;&gt;</text>
+<text x="175.0" y="782" text-anchor="middle" font-size="13" font-weight="bold" font-family="sans-serif" fill="#2C2C2A">LibroNoEncontradoException</text>
+<line x1="40" y1="790" x2="310" y2="790" stroke="#5F5E5A" stroke-width="0.7"/>
+<line x1="40" y1="814" x2="310" y2="814" stroke="#5F5E5A" stroke-width="0.7"/>
+</g>
+</svg>
