@@ -1,7 +1,6 @@
 
 public class Libro 
 {
-	private String autor;
 	private String titulo;
 	private String genero;
 	private String isbn;
@@ -9,9 +8,8 @@ public class Libro
 	private int stock;
 	
 	// constructor
-	public Libro(String autor, String titulo, String genero, String isbn, int precio, int stock)
+	public Libro(String titulo, String genero, String isbn, int precio, int stock)
 	{
-		this.autor = autor;
 		this.titulo = titulo;
 		this.genero = genero;
 		this.isbn = isbn;
@@ -19,4 +17,66 @@ public class Libro
 		this.stock = stock;
 	}
 	
+	
+	// Metodos
+	
+	
+	
+	
+	
+	
+	
+	
+	// getters y setters
+	
+	// genero
+	public String getGenero() {
+		return genero;
+	}
+	
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+	// Titulo
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	// ISBN
+	
+	public String getIsbn() {
+		return isbn;
+	}
+	
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	
+	// Precio
+	
+	public int getPrecio() {
+		return precio;
+	}
+	
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	
+	// stock
+	
+	public int getStock() 
+	{
+		return stock;
+	}
+	
+	public void setStock(int stock) 
+	{
+		this.stock = stock;
+	}	
 }
