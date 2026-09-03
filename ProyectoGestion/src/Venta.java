@@ -3,14 +3,15 @@ import java.util.List;
 
 public class Venta 
 {
+	private String id;
 	private LocalDate fecha;
 	private List<ItemVenta> productos;
 	
 	// Constructor
 	public Venta(LocalDate fecha, List<ItemVenta> productos) 
 	{
-		fecha = this.fecha;
-		productos = this.productos;
+		this.fecha = fecha;
+		this.productos = productos;
 	}
 	
 	
@@ -20,6 +21,15 @@ public class Venta
 	
 	
 	//Getters y setters
+	
+	// Id
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	// Fecha
 	public LocalDate getFecha() {
