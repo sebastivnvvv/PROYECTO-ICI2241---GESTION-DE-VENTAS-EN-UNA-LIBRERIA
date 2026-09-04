@@ -24,8 +24,7 @@ public class Libro
 	public void venderUnidad(int cantidad) throws StockInsuficienteException {
 	    if (cantidad > stock) 
 	    {
-	        throw new StockInsuficienteException(
-	            "Stock insuficiente para \"" + titulo + "\". Disponible: " + stock + ", solicitado: " + cantidad);
+	        throw new StockInsuficienteException("Stock insuficiente para \"" + titulo + "\". Disponible: " + stock + ", solicitado: " + cantidad);
 	    }
 	    stock -= cantidad;
 	}

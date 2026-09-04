@@ -19,7 +19,7 @@ public class GestorLibreria
 		this.siguienteNumeroVenta = 1;
 	}
 	
-	// Metodos
+	// METODOS
 	
 	// Agregar un autor al mapa de autores
 	public void agregarAutor(Autor autor) 
@@ -61,7 +61,7 @@ public class GestorLibreria
 		autores.remove(id);
 	}
 	
-	// Ventas
+	// METODOS VENTA
 	
 	private String generarIdVenta(LocalDate fecha)
 	{
@@ -140,7 +140,7 @@ public class GestorLibreria
 		ventas.remove(id);
 	}
 	
-	// libro
+	// METODOS APLICADO A LIBRO
 	
 	public void agregarLibro(String autorId, Libro libro) throws LibroNoEncontradoException
 	{
