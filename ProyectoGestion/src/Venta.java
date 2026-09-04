@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Venta 
@@ -8,17 +9,39 @@ public class Venta
 	private List<ItemVenta> productos;
 	
 	// Constructor
-	public Venta(LocalDate fecha, List<ItemVenta> productos) 
+	public Venta(String id) 
 	{
-		this.fecha = fecha;
-		this.productos = productos;
+		this.id = id;
+		this.fecha = LocalDate.now();
+		this.productos = new ArrayList<>();
 	}
 	
 	
 	// Metodos
+	public double calcularTotal() 
+	{
+		double total = 0;
+		for(int i = 0; i < productos.size(); i++) 
+		{
+			double actual = productos.get(i).subTotal(); 
+			total += actual;
+		}
+		
+		return total;
+	}
 	
+	// Sobrecarga de calcularTotal pero esta vez con el calculo total pero con descuento
+	public double calcularTotal(Promocion promo) 
+	{
+		double totalBruto = calcularTotal();
+		return totalBruto - promo.calcularDescuento(totalBruto);
+
+	}
 	
-	
+	public void agregarItem(ItemVenta item)
+	{
+	    productos.add(item);
+	}
 	
 	//Getters y setters
 	
@@ -42,7 +65,7 @@ public class Venta
 	
 	// productos
 	public List<ItemVenta> getProductos() {
-		return productos;
+	    return new ArrayList<>(productos);
 	}
 	
 	public void setProductos(List<ItemVenta> productos) {

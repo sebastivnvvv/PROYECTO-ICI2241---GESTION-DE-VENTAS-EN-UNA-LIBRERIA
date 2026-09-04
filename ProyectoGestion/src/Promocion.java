@@ -1,5 +1,5 @@
 
-public class Promocion 
+public abstract class Promocion 
 {
-	// Abstracta
+	  public abstract double calcularDescuento(double montoBruto);
 }

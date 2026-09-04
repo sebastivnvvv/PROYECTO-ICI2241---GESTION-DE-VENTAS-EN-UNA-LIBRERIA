@@ -14,12 +14,12 @@ public class ItemVenta
 	
 	
 	// Metodos
-	
-	
-	
-	
-	
-	
+	public double subTotal()
+	{
+		double precio = libro.getPrecio();
+		double total = precio * cantidad;
+		return total;
+	}
 	
 	
 	// getters y setters

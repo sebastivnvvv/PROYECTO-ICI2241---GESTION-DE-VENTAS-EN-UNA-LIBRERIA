@@ -20,12 +20,15 @@ public class Libro
 	
 	// Metodos
 	
-	
-	
-	
-	
-	
-	
+	// vender unidad == a ver si el stock alcanza o si no
+	public void venderUnidad(int cantidad) throws StockInsuficienteException {
+	    if (cantidad > stock) 
+	    {
+	        throw new StockInsuficienteException(
+	            "Stock insuficiente para \"" + titulo + "\". Disponible: " + stock + ", solicitado: " + cantidad);
+	    }
+	    stock -= cantidad;
+	}
 	
 	// getters y setters
 	

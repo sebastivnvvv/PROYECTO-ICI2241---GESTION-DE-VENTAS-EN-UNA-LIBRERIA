@@ -91,7 +91,8 @@ public class GestorLibreria
 		{
 			ItemVenta item = items.get(i);
 			Libro libro = item.getLibro();
-			libro.setStock(libro.getStock() - item.getCantidad());
+			//libro.setStock(libro.getStock() - item.getCantidad());
+			libro.venderUnidad(item.getCantidad());
 		}
 		
 		// se genera el id, se le asigna a la venta, y se guarda en el mapa
@@ -100,6 +101,13 @@ public class GestorLibreria
 		ventas.put(id, venta);
 		
 		siguienteNumeroVenta++;
+	}
+	
+	// Sobrecarga registra la venta aplicando promocion y devuelve el total con descuento
+	public double registrarVenta(Venta venta, Promocion promocion) throws StockInsuficienteException
+	{
+	    registrarVenta(venta); 
+	    return venta.calcularTotal(promocion);
 	}
 
 	public List<Venta> listarVentas()
@@ -132,17 +140,138 @@ public class GestorLibreria
 		ventas.remove(id);
 	}
 	
+	// libro
+	
+	public void agregarLibro(String autorId, Libro libro) throws LibroNoEncontradoException
+	{
+	    Autor autor = buscarAutor(autorId);
+	    autor.agregarLibro(libro);
+	}
+	
+	
+	// unimos todos los libros
+	public List<Libro> listarLibros()
+	{
+	    List<Libro> todos = new ArrayList<>();
+	    List<Autor> listaAutores = new ArrayList<>(autores.values());
+
+	    for (int i = 0; i < listaAutores.size(); i++)
+	    {
+	        Autor autor = listaAutores.get(i);
+	        List<Libro> librosDelAutor = autor.getLibrosPublicados();
+
+	        for (int j = 0; j < librosDelAutor.size(); j++)
+	        {
+	            todos.add(librosDelAutor.get(j));
+	        }
+	    }
+	    return todos;
+	}
 	
 	
 	
+	// Buscar libro pero por el ISBN del libro
+	public Libro buscarLibro(String isbn) throws LibroNoEncontradoException
+	{
+	    List<Libro> libros = listarLibros();
+
+	    for (int i = 0; i < libros.size(); i++)
+	    {
+	        if (libros.get(i).getIsbn().equalsIgnoreCase(isbn))
+	        {
+	            return libros.get(i);
+	        }
+	    }
+	    throw new LibroNoEncontradoException("No existe un libro con ISBN: " + isbn);
+	}
+ 
+	// Buscar libro pero esta vez con el titulo y el nombre del autor
+	public List<Libro> buscarLibro(String titulo, String nombreAutor)
+	{
+	    List<Libro> resultado = new ArrayList<>();
+	    List<Autor> listaAutores = new ArrayList<>(autores.values());
+
+	    for (int i = 0; i < listaAutores.size(); i++)
+	    {
+	        Autor autor = listaAutores.get(i);
+	        String nombreActual = autor.getNombre().toLowerCase();
+	        String nombreBuscado = nombreAutor.toLowerCase();
+
+	        if (!nombreActual.contains(nombreBuscado))
+	        {
+	            continue;
+	        }
+
+	        List<Libro> librosDelAutor = autor.getLibrosPublicados();
+
+	        for (int j = 0; j < librosDelAutor.size(); j++)
+	        {
+	            Libro libroActual = librosDelAutor.get(j);
+	            String tituloActual = libroActual.getTitulo().toLowerCase();
+	            String tituloBuscado = titulo.toLowerCase();
+
+	            if (tituloActual.contains(tituloBuscado))
+	            {
+	                resultado.add(libroActual);
+	            }
+	        }
+	    }
+	    return resultado;
+	}
 	
 	
+	public void editarLibro(String isbn, String nuevoTitulo, int nuevoPrecio, int nuevoStock) throws LibroNoEncontradoException
+	{
+	    Libro libro = buscarLibro(isbn);
+	    libro.setTitulo(nuevoTitulo);
+	    libro.setPrecio(nuevoPrecio);
+	    libro.setStock(nuevoStock);
+	}
+	
+	public void eliminarLibro(String isbn) throws LibroNoEncontradoException
+	{
+	    List<Autor> listaAutores = new ArrayList<>(autores.values());
+
+	    for (int i = 0; i < listaAutores.size(); i++)
+	    {
+	        List<Libro> librosDelAutor = listaAutores.get(i).getLibrosPublicados();
+
+	        for (int j = 0; j < librosDelAutor.size(); j++)
+	        {
+	            if (librosDelAutor.get(j).getIsbn().equalsIgnoreCase(isbn))
+	            {
+	                librosDelAutor.remove(j);
+	                return;
+	            }
+	        }
+	    }
+	    throw new LibroNoEncontradoException("No existe un libro con ISBN: " + isbn);
+	}
+	
+	public List<Libro> sugerirRelacionados(Libro libro)
+	{
+	    List<Libro> sugeridos = new ArrayList<>();
+	    List<Libro> todos = listarLibros();
+
+	    for (int i = 0; i < todos.size(); i++)
+	    {
+	        Libro candidato = todos.get(i);
+	        boolean mismoGenero = candidato.getGenero().equalsIgnoreCase(libro.getGenero());
+	        boolean esElMismo = candidato.getIsbn().equalsIgnoreCase(libro.getIsbn());
+
+	        if (mismoGenero && !esElMismo)
+	        {
+	            sugeridos.add(candidato);
+	        }
+	    }
+	    return sugeridos;
+	}
 	
 	// Getters y setters
 	
 	// Autores
 	public Map<String, Autor> getAutores() {
-		return autores;
+	    return new LinkedHashMap<>(autores);
 	}
 	
 	public void setAutores(Map<String, Autor> autores) {
@@ -151,7 +280,7 @@ public class GestorLibreria
 	
 	// Ventas
 	public Map<String, Venta> getVentas() {
-		return ventas;
+	    return new LinkedHashMap<>(ventas);
 	}
 	
 	public void setVentas(Map<String, Venta> ventas) {
