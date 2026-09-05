@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Venta 
+public class Venta
 {
 	private String id;
 	private LocalDate fecha;

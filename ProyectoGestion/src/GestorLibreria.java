@@ -22,9 +22,14 @@ public class GestorLibreria
 	// METODOS
 	
 	// Agregar un autor al mapa de autores
-	public void agregarAutor(Autor autor) 
+	public boolean agregarAutor(Autor autor) 
 	{
+		if (autores.containsKey(autor.getId()))
+		{
+			return false;
+		}
 		autores.put(autor.getId(), autor);
+		return true;
 	}
 	
 	// ArrayList que contiene todos los autores de forma independiente al mapa
@@ -74,32 +79,49 @@ public class GestorLibreria
 	public void registrarVenta(Venta venta) throws StockInsuficienteException
 	{
 		List<ItemVenta> items = venta.getProductos();
-		// se valida la venta si es posible
+
+		// Primero se valida toda la venta sin modificar nada todavia:
+		// 1) que la cantidad pedida sea mayor a 0
+		// 2) que sumando todos los items del mismo libro por si esta repetido
+		//    en la misma venta no se pase del stock disponible
+		
 		for (int i = 0; i < items.size(); i++)
 		{
-			ItemVenta item = items.get(i);
-			Libro libro = item.getLibro();
-			
-			if (item.getCantidad() > libro.getStock())
+			ItemVenta itemActual = items.get(i);
+			Libro libroActual = itemActual.getLibro();
+
+			if (itemActual.getCantidad() <= 0)
 			{
-				throw new StockInsuficienteException("Stock insuficiente para \"" + libro.getTitulo() + "\". "+ "Disponible: " + libro.getStock() + ", solicitado: " + item.getCantidad());
+				throw new StockInsuficienteException("La cantidad debe ser mayor a 0 para \"" + libroActual.getTitulo() + "\"");
+			}
+
+			int totalPedido = 0;
+			for (int j = 0; j < items.size(); j++)
+			{
+				Libro otroLibro = items.get(j).getLibro();
+				if (otroLibro.getIsbn().equals(libroActual.getIsbn()))
+				{
+					totalPedido += items.get(j).getCantidad();
+				}
+			}
+
+			if (totalPedido > libroActual.getStock())
+			{
+				throw new StockInsuficienteException("Stock insuficiente para \"" + libroActual.getTitulo() + "\". "+ "Disponible: " + libroActual.getStock() + ", solicitado en total: " + totalPedido);
 			}
 		}
-		
-		// si paso la validacion, se descuenta el stock de cada libro
+
+		// si paso toda la validacion, recien ahi se descuenta el stock de cada libro
 		for (int i = 0; i < items.size(); i++)
 		{
 			ItemVenta item = items.get(i);
-			Libro libro = item.getLibro();
-			//libro.setStock(libro.getStock() - item.getCantidad());
-			libro.venderUnidad(item.getCantidad());
+			item.getLibro().venderUnidad(item.getCantidad());
 		}
-		
-		// se genera el id, se le asigna a la venta, y se guarda en el mapa
+
 		String id = generarIdVenta(venta.getFecha());
 		venta.setId(id);
 		ventas.put(id, venta);
-		
+
 		siguienteNumeroVenta++;
 	}
 	
@@ -185,6 +207,14 @@ public class GestorLibreria
 	    throw new LibroNoEncontradoException("No existe un libro con ISBN: " + isbn);
 	}
  
+	// Le quita las tildes a un texto para que buscar garcia tambien encuentre a García
+	private String quitarTildes(String texto)
+	{
+		return texto
+				.replace("á", "a").replace("é", "e").replace("í", "i")
+				.replace("ó", "o").replace("ú", "u").replace("ñ", "n");
+	}
+
 	// Buscar libro pero esta vez con el titulo y el nombre del autor
 	public List<Libro> buscarLibro(String titulo, String nombreAutor)
 	{
@@ -194,8 +224,8 @@ public class GestorLibreria
 	    for (int i = 0; i < listaAutores.size(); i++)
 	    {
 	        Autor autor = listaAutores.get(i);
-	        String nombreActual = autor.getNombre().toLowerCase();
-	        String nombreBuscado = nombreAutor.toLowerCase();
+	        String nombreActual = quitarTildes(autor.getNombre().toLowerCase());
+	        String nombreBuscado = quitarTildes(nombreAutor.toLowerCase());
 
 	        if (!nombreActual.contains(nombreBuscado))
 	        {
@@ -207,8 +237,8 @@ public class GestorLibreria
 	        for (int j = 0; j < librosDelAutor.size(); j++)
 	        {
 	            Libro libroActual = librosDelAutor.get(j);
-	            String tituloActual = libroActual.getTitulo().toLowerCase();
-	            String tituloBuscado = titulo.toLowerCase();
+	            String tituloActual = quitarTildes(libroActual.getTitulo().toLowerCase());
+	            String tituloBuscado = quitarTildes(titulo.toLowerCase());
 
 	            if (tituloActual.contains(tituloBuscado))
 	            {
