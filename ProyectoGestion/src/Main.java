@@ -7,8 +7,15 @@ public class Main
 	{
 		Scanner sc = new Scanner(System.in);
 		GestorLibreria gestor = new GestorLibreria();
-
-		cargarDatosIniciales(gestor);
+		
+		if (GestorArchivosCSV.existenDatosGuardados())
+		{
+			GestorArchivosCSV.cargarDatos(gestor);
+		}
+		else
+		{
+			cargarDatosIniciales(gestor);
+		}
 
 		System.out.println("¿Como deseas usar el sistema?");
 		System.out.println("1. Consola");
@@ -28,6 +35,10 @@ public class Main
 		InterfazConsola interfaz = new InterfazConsola(gestor, sc);
 		interfaz.iniciar();
 
+		// Guardado de datos
+		GestorArchivosCSV.guardarDatos(gestor);
+		
+		
 		sc.close();
 		System.out.println("Programa finalizado.");
 	}

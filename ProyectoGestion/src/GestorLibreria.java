@@ -68,6 +68,22 @@ public class GestorLibreria
 	
 	// METODOS VENTA
 	
+	// Metodo especial para cuando se cargan ventas ya existentes desde el CSV
+	// Actualiza el contador para que la proxima venta nueva no repita un id
+	
+	public void agregarVentaCargada(Venta venta)
+	{
+		ventas.put(venta.getId(), venta);
+
+		String correlativoTexto = venta.getId().substring(0, 5);
+		int correlativo = Integer.parseInt(correlativoTexto);
+
+		if (correlativo >= siguienteNumeroVenta)
+		{
+			siguienteNumeroVenta = correlativo + 1;
+		}
+	}
+	
 	private String generarIdVenta(LocalDate fecha)
 	{
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("ddMMyyyy");
