@@ -25,9 +25,10 @@ public class Main
 
 		if (opcion.equals("2"))
 		{
-			// Todavia no esta implementada la interfaz de ventana y se cierra al elegirla
-			System.out.println("El modo ventana todavia no esta implementado. Cerrando el programa...");
 			sc.close();
+			InterfazVentana ventana = new InterfazVentana(gestor);
+			ventana.iniciar();
+			System.out.println("Programa finalizado.");
 			return;
 		}
 
