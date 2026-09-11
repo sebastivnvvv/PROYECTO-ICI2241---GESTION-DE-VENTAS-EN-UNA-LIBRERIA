@@ -134,19 +134,25 @@ public class GestorArchivosCSV
                     if (itemTexto.isEmpty()) continue;
 
                     String[] datosItem = itemTexto.split(SEPARADOR_ITEM);
-                    if (datosItem.length < 2) continue;
+                    if (datosItem.length < 4) continue;
 
                     String isbn = datosItem[0].trim();
-                    int cantidad = Integer.parseInt(datosItem[1].trim());
+                    String titulo = datosItem[1].trim();
+                    int cantidad = Integer.parseInt(datosItem[2].trim());
+                    int precioHist = Integer.parseInt(datosItem[3].trim());
 
                     try
                     {
                         Libro libro = gestor.buscarLibro(isbn);
-                        venta.agregarItem(new ItemVenta(libro, cantidad));
+                        ItemVenta nuevoItem = new ItemVenta(libro, cantidad);
+                        nuevoItem.setPrecioUnitario(precioHist);
+                        venta.agregarItem(nuevoItem);
                     }
                     catch (LibroNoEncontradoException e)
                     {
-                        System.out.println("Venta " + id + ": no se encontro el libro con ISBN " + isbn + ", se omitio ese item.");
+                        // Si el libro ya fue eliminado creamos el item historico
+                        ItemVenta itemHistorico = new ItemVenta(isbn, titulo, cantidad, precioHist);
+                        venta.agregarItem(itemHistorico);
                     }
                 }
 
@@ -233,16 +239,20 @@ public class GestorArchivosCSV
                 for (int j = 0; j < items.size(); j++)
                 {
                     ItemVenta item = items.get(j);
-                    itemsTexto.append(item.getLibro().getIsbn());
+                    // Usamos los métodos seguros para no depender del objeto Libro
+                    itemsTexto.append(item.getIsbnSeguro());
+                    itemsTexto.append(SEPARADOR_ITEM);
+                    itemsTexto.append(item.getTituloSeguro());
                     itemsTexto.append(SEPARADOR_ITEM);
                     itemsTexto.append(item.getCantidad());
+                    itemsTexto.append(SEPARADOR_ITEM);
+                    itemsTexto.append(item.getPrecioUnitario());
 
                     if (j < items.size() - 1)
                     {
                         itemsTexto.append(SEPARADOR_ITEMS);
                     }
                 }
-
                 // Formato id;fecha;isbn1:cantidad1,isbn2:cantidad2
                 
                 String fila = venta.getId() + SEPARADOR + venta.getFecha().toString() + SEPARADOR + itemsTexto.toString() + SEPARADOR + venta.getDescuentoAplicado();

@@ -558,7 +558,7 @@ public class InterfazVentana
 			for (int j = 0; j < items.size(); j++)
 			{
 				ItemVenta item = items.get(j);
-				texto.append("   - ").append(item.getLibro().getTitulo())
+				texto.append("   - ").append(item.getTituloSeguro())
 						.append(" x").append(item.getCantidad()).append("\n");
 			}
 		}

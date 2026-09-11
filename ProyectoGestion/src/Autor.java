@@ -28,7 +28,7 @@ public class Autor
 			
 			if(idLibro.equals(idActual)) 
 			{
-				libroActual.setStock(libroActual.getStock() + 1);
+				libroActual.setStock(libroActual.getStock() + libro.getStock());
 				return;
 			}
 		}

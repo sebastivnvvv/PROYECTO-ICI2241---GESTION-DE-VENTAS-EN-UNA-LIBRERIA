@@ -538,7 +538,7 @@ public class InterfazConsola
 			for (int j = 0; j < items.size(); j++)
 			{
 				ItemVenta item = items.get(j);
-				System.out.println("   - " + item.getLibro().getTitulo() + " x" + item.getCantidad());
+				System.out.println("   - " + item.getTituloSeguro() + " x" + item.getCantidad());
 			}
 		}
 	}
