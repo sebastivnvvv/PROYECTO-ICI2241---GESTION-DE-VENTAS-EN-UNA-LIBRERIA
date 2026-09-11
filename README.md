@@ -12,19 +12,19 @@ El sistema busca representar el funcionamiento básico de una librería, permiti
 
 La aplicación mantiene información sobre:
 
-- ✍️ Autores
-- 📚 Libros
-- 🛒 Ventas
-- 📦 Stock disponible
-- 🏷️ Promociones
+- Autores
+- Libros
+- Ventas
+- Stock disponible
+- Promociones
 
 Además, cuenta con mecanismos para validar operaciones y evitar ventas cuando no existe stock suficiente.
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-### 👤 Gestión de autores
+###  Gestión de autores
 
 El sistema permite:
 
@@ -37,7 +37,7 @@ El sistema permite:
 
 Cada autor se identifica mediante un ID único.
 
-### 📚 Gestión de libros
+### Gestión de libros
 
 Se pueden realizar las siguientes operaciones:
 
@@ -52,7 +52,7 @@ Se pueden realizar las siguientes operaciones:
 
 La búsqueda por título y autor permite realizar coincidencias parciales y considera diferencias de tildes.
 
-### 🛒 Gestión de ventas
+### Gestión de ventas
 
 El sistema permite:
 
@@ -67,7 +67,7 @@ El sistema permite:
 
 Antes de registrar una venta, el sistema verifica que las cantidades solicitadas sean válidas y que exista stock suficiente.
 
-### 🏷️ Promociones
+### Promociones
 
 Las ventas pueden incorporar promociones, entre ellas:
 
@@ -77,7 +77,7 @@ Las ventas pueden incorporar promociones, entre ellas:
 
 El sistema calcula el total de la venta considerando la promoción seleccionada.
 
-### 💾 Persistencia de datos
+### Persistencia de datos
 
 La información puede almacenarse y recuperarse mediante archivos **CSV**.
 
@@ -91,11 +91,11 @@ Los archivos CSV incluidos en el proyecto corresponden a:
 
 ---
 
-## 🖥️ Modos de uso
+## Modos de uso
 
 El programa dispone de dos formas de interacción:
 
-### 💻 Consola
+### Consola
 
 Permite utilizar el sistema mediante un menú de opciones en la terminal.
 
@@ -118,22 +118,22 @@ La opción `2` inicia la interfaz gráfica, mientras que cualquier otra opción 
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 | Tecnología | Uso |
 |---|---|
-| ☕ Java | Lenguaje principal |
-| 🖥️ Java Swing | Interfaz gráfica |
-| 📄 CSV | Persistencia de datos |
-| 📦 Java Collections | Gestión de autores y ventas |
-| 🧩 Programación Orientada a Objetos | Modelado del sistema |
-| ⚠️ Excepciones | Control de errores y reglas de negocio |
+| Java | Lenguaje principal |
+| Java Swing | Interfaz gráfica |
+| CSV | Persistencia de datos |
+| Java Collections | Gestión de autores y ventas |
+| Programación Orientada a Objetos | Modelado del sistema |
+| Excepciones | Control de errores y reglas de negocio |
 
 El proyecto utiliza estructuras como `Map`, `List` y `ArrayList` para administrar los objetos del sistema.
 
 ---
 
-## 🏗️ Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 PROYECTO-ICI2241---GESTION-DE-VENTAS-EN-UNA-LIBRERIA/
@@ -170,7 +170,7 @@ La estructura del código separa las entidades principales, la lógica de gesti�
 
 ---
 
-## 🧩 Principales clases
+## Principales clases
 
 ### `GestorLibreria`
 
@@ -218,7 +218,7 @@ El proyecto incorpora excepciones propias para controlar situaciones como:
 
 ---
 
-## 🔄 Flujo básico de una venta
+## Flujo básico de una venta
 
 El registro de una venta sigue, a grandes rasgos, el siguiente flujo:
 
@@ -265,7 +265,7 @@ La validación del stock se realiza antes de modificar las cantidades disponible
 
 ---
 
-## ▶️ Ejecución
+## Ejecución
 
 ### Requisitos
 
@@ -301,30 +301,8 @@ El programa carga automáticamente los datos almacenados en CSV cuando estos exi
 
 ---
 
-## 📊 Diagrama UML
+## Diagrama UML
 
 El proyecto incluye un diagrama UML que representa la estructura del sistema:
 
 ![Diagrama UML](uml_libreria_2.svg)
-
----
-
-## 🎓 Contexto académico
-
-Este proyecto fue desarrollado para la asignatura:
-
-**ICI2241 - Programación Avanzada**
-
-El objetivo es aplicar conceptos de programación orientada a objetos, estructuras de datos, manejo de excepciones, interfaces de usuario y persistencia de información en un sistema de gestión de ventas.
-
----
-
-## 👨‍💻 Autores
-
-Proyecto desarrollado como parte del curso **ICI2241 - Programación Avanzada**.
-
----
-
-## 📄 Licencia
-
-Este proyecto fue desarrollado con fines académicos.
