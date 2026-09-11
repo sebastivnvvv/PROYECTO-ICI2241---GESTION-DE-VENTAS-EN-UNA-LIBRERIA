@@ -1,4 +1,4 @@
-# 📚 Gestión de Ventas en una Librería
+# Gestión de Ventas en una Librería
 
 Sistema de gestión de una librería desarrollado en **Java** para la asignatura **ICI2241 - Programación Avanzada**.
 
@@ -6,7 +6,7 @@ El proyecto permite administrar autores, libros y ventas, incorporando control d
 
 ---
 
-## 📋 Descripción
+## Descripción
 
 El sistema busca representar el funcionamiento básico de una librería, permitiendo gestionar su catálogo de libros y registrar las ventas realizadas.
 
