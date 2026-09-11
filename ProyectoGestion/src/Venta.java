@@ -7,6 +7,7 @@ public class Venta
 	private String id;
 	private LocalDate fecha;
 	private List<ItemVenta> productos;
+	private double descuentoAplicado;
 	
 	// Constructor
 	public Venta(String id) 
@@ -14,27 +15,33 @@ public class Venta
 		this.id = id;
 		this.fecha = LocalDate.now();
 		this.productos = new ArrayList<>();
+		this.descuentoAplicado = 0;
 	}
 	
 	
 	// Metodos
-	public double calcularTotal() 
+	
+	public double calcularTotalBruto() 
 	{
 		double total = 0;
 		for(int i = 0; i < productos.size(); i++) 
 		{
-			double actual = productos.get(i).subTotal(); 
-			total += actual;
+			total += productos.get(i).subTotal(); 
 		}
 		
 		return total;
 	}
 	
+	public double calcularTotal() 
+	{
+		return calcularTotalBruto() - this.descuentoAplicado;
+	}
+	
 	// Sobrecarga de calcularTotal pero esta vez con el calculo total pero con descuento
 	public double calcularTotal(Promocion promo) 
 	{
-		double totalBruto = calcularTotal();
-		return totalBruto - promo.calcularDescuento(totalBruto);
+		this.descuentoAplicado = promo.calcularDescuento(this);
+		return calcularTotal();
 
 	}
 	
@@ -71,4 +78,12 @@ public class Venta
 	public void setProductos(List<ItemVenta> productos) {
 		this.productos = productos;
 	}
+	// Descuentos
+	public double getDescuentoAplicado() {
+        return descuentoAplicado;
+    }
+
+    public void setDescuentoAplicado(double descuentoAplicado) {
+        this.descuentoAplicado = descuentoAplicado;
+    }
 }

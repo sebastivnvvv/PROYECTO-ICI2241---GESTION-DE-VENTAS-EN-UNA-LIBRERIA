@@ -115,15 +115,17 @@ public class GestorArchivosCSV
                 linea = linea.trim();
                 if (linea.isEmpty()) continue;
 
-                String[] partes = linea.split(SEPARADOR, 3);
-                if (partes.length < 3) continue;
+                String[] partes = linea.split(SEPARADOR, 4);
+                if (partes.length < 4) continue;
 
                 String id = partes[0].trim();
                 String fechaTexto = partes[1].trim();
                 String itemsTexto = partes[2].trim();
+                double descuento = Double.parseDouble(partes[3].trim());
 
                 Venta venta = new Venta(id);
                 venta.setFecha(LocalDate.parse(fechaTexto));
+                venta.setDescuentoAplicado(descuento);
 
                 String[] itemsSeparados = itemsTexto.split(SEPARADOR_ITEMS);
                 for (int i = 0; i < itemsSeparados.length; i++)
@@ -243,7 +245,7 @@ public class GestorArchivosCSV
 
                 // Formato id;fecha;isbn1:cantidad1,isbn2:cantidad2
                 
-                String fila = venta.getId() + SEPARADOR + venta.getFecha().toString() + SEPARADOR + itemsTexto.toString();
+                String fila = venta.getId() + SEPARADOR + venta.getFecha().toString() + SEPARADOR + itemsTexto.toString() + SEPARADOR + venta.getDescuentoAplicado();
                 bwVentas.write(fila);
                 bwVentas.newLine();
             }

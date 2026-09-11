@@ -1,16 +1,23 @@
 
 public class PromocionPorcentaje extends Promocion {
 
-    private double porcentaje;
+	private double porcentaje;
 
     public PromocionPorcentaje(double porcentaje) 
     {
-        this.porcentaje = porcentaje;
+    	if (porcentaje>1)
+    	{
+    		this.porcentaje = porcentaje / 100.0;
+    	}
+    	else 
+    	{
+    		this.porcentaje = porcentaje;
+    	}
     }
 
     @Override
-    public double calcularDescuento(double montoBruto) 
+    public double calcularDescuento(Venta venta) 
     {
-        return montoBruto * porcentaje;
+    	return venta.calcularTotalBruto() * porcentaje;
     }
 }
