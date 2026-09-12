@@ -305,4 +305,4 @@ El programa carga automáticamente los datos almacenados en CSV cuando estos exi
 
 El proyecto incluye un diagrama UML que representa la estructura del sistema:
 
-![Diagrama UML](uml_libreria_2.svg)
+![Diagrama UML](uml_libreria.png)
