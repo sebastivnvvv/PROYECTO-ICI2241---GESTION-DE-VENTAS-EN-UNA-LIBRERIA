@@ -35,10 +35,10 @@ public class Libro
 	public String getGenero() {
 		return genero;
 	}
-	
+	/*
 	public void setGenero(String genero) {
 		this.genero = genero;
-	}
+	}*/
 	
 	// Titulo
 	
@@ -55,10 +55,10 @@ public class Libro
 	public String getIsbn() {
 		return isbn;
 	}
-	
+	/*
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
-	}
+	}*/
 	
 	// Precio
 	
