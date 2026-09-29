@@ -41,20 +41,20 @@ public class ItemVenta
 	public int getCantidad() {
 		return cantidad;
 	}
-	
+	/*
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
-	}
+	}*/
 	
 	//Libro
 	
 	public Libro getLibro() {
 		return libro;
 	}
-	
+	/*
 	public void setLibro(Libro libro) {
 		this.libro = libro;
-	}
+	}*/
 	
 	// PrecioUnitario
 
