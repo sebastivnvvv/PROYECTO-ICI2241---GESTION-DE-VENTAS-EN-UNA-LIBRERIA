@@ -61,7 +61,7 @@ public class Autor
 	}*/
 	
 	public List<Libro> getLibrosPublicados() {
-	    return librosPublicados;
+	    return new ArrayList<>(librosPublicados);
 	}
 	
 }
