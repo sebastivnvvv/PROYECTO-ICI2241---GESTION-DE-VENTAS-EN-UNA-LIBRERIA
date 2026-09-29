@@ -56,9 +56,9 @@ public class Autor
 		this.nombre = nombre;
 	}
 	
-	public void setLibrosPublicados(List<Libro> librosPublicados) {
+	/*public void setLibrosPublicados(List<Libro> librosPublicados) {
 		this.librosPublicados = librosPublicados;
-	}
+	}*/
 	
 	public List<Libro> getLibrosPublicados() {
 	    return librosPublicados;
