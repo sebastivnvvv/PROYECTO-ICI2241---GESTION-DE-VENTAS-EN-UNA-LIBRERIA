@@ -74,10 +74,10 @@ public class Venta
 	public List<ItemVenta> getProductos() {
 	    return new ArrayList<>(productos);
 	}
-	
+	/*
 	public void setProductos(List<ItemVenta> productos) {
 		this.productos = productos;
-	}
+	}*/
 	// Descuentos
 	public double getDescuentoAplicado() {
         return descuentoAplicado;
