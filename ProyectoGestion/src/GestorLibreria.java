@@ -316,13 +316,14 @@ public class GestorLibreria
 	// Getters y setters
 	
 	// Autores
+	/*
 	public Map<String, Autor> getAutores() {
 	    return new LinkedHashMap<>(autores);
 	}
 	
 	public void setAutores(Map<String, Autor> autores) {
 		this.autores = autores;
-	}	
+	}
 	
 	// Ventas
 	public Map<String, Venta> getVentas() {
@@ -331,5 +332,5 @@ public class GestorLibreria
 	
 	public void setVentas(Map<String, Venta> ventas) {
 		this.ventas = ventas;
-	}
+	}*/
 }
