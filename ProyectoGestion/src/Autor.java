@@ -35,6 +35,20 @@ public class Autor
 		librosPublicados.add(libro);
 	}
 	
+	// Elimina un libro de este autor segun su ISBN. Devuelve true si lo encontro y elimino
+	public boolean eliminarLibro(String isbn) 
+	{
+		for(int i = 0; i < librosPublicados.size(); i++) 
+		{
+			if(librosPublicados.get(i).getIsbn().equalsIgnoreCase(isbn)) 
+			{
+				librosPublicados.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	// Getters y Setters
 	
 	// ID

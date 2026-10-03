@@ -274,21 +274,16 @@ public class GestorLibreria
 	    libro.setStock(nuevoStock);
 	}
 	
+	// Le pide a cada autor que elimine el libro. El que lo tenga lo borra de su lista real
 	public void eliminarLibro(String isbn) throws LibroNoEncontradoException
 	{
 	    List<Autor> listaAutores = new ArrayList<>(autores.values());
 
 	    for (int i = 0; i < listaAutores.size(); i++)
 	    {
-	        List<Libro> librosDelAutor = listaAutores.get(i).getLibrosPublicados();
-
-	        for (int j = 0; j < librosDelAutor.size(); j++)
+	        if (listaAutores.get(i).eliminarLibro(isbn))
 	        {
-	            if (librosDelAutor.get(j).getIsbn().equalsIgnoreCase(isbn))
-	            {
-	                librosDelAutor.remove(j);
-	                return;
-	            }
+	        	return;
 	        }
 	    }
 	    throw new LibroNoEncontradoException("No existe un libro con ISBN: " + isbn);
